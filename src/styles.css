@@ -46,11 +46,35 @@ li:hover {
     gap: 1rem;
 }
 
+circle-progress::part(base) {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+circle-progress::part(value) {
+	stroke-width: 50px;
+	stroke: hsl(160, 63%, 55%);
+}
+circle-progress::part(circle) {
+	stroke-width: 50px;
+	stroke: #999;
+}
+
 .todo-item-title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .todo-item-description {
 
+}
+
+.todo-item > h2 {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
 }
 
 .todo-item-checklist {
