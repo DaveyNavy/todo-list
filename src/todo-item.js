@@ -3,12 +3,14 @@ export class ToDoItem {
     description;
     dueDate;
     priority;
+    checklist;
 
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority, checklist) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.checklist = checklist;
     }
 
     getTitle() {
@@ -41,5 +43,13 @@ export class ToDoItem {
 
     setPriority(priority) {
         this.priority = priority;
+    }
+
+    getChecklist() {
+        return this.checklist;
+    }
+
+    setChecklist(checklist) {
+        this.checklist = checklist;
     }
 }
