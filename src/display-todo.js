@@ -7,7 +7,7 @@ export function displayToDo(todo) {
     div.classList.add("todo-item");
 
     const titleDiv = document.createElement("div");
-    titleDiv.classList.add("todo-item-title")
+    titleDiv.classList.add("todo-item-title");
 
     const cp = new CircleProgress({
         max: 100,
