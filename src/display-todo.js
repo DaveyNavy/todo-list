@@ -43,7 +43,7 @@ export function displayToDo(todo) {
     const form = document.createElement("form");
     todo.getChecklist().forEach((element, index) => {
         const checklistDiv = document.createElement("div");
-        checklistDiv.classList.add("todo-item-checklist-item");
+        checklistDiv.classList.add("checklist-item");
 
         const label = document.createElement("label");
         label.setAttribute("for", "item" + index);
@@ -67,7 +67,7 @@ export function displayToDo(todo) {
 
         form.appendChild(checklistDiv);
     });
-    form.classList.add("todo-item-checklist");
+    form.classList.add("item-checklist");
     div.appendChild(form);
 
 

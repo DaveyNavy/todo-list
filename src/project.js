@@ -1,9 +1,12 @@
 import { ToDoItem } from "./todo-item";
 
 export class Project {
+    name;
     taskList;
 
-    constructor() {
+
+    constructor(name) {
+        this.name = name;
         this.taskList = new Array();
     }
 
@@ -23,5 +26,11 @@ export class Project {
 
     getTaskNames() {
         return this.taskList.map(item => item.getTitle());
+    }
+
+    getTasksOnDate(date) {
+        return this.taskList.filter(item => {
+            return item.getDate().getMonth() == date.getMonth() && item.getDate().getDate() == date.getDate();
+        })
     }
 }

@@ -1,14 +1,16 @@
 export class ToDoItem {
     title;
+    projectName;
     description;
-    dueDate;
+    date;
     priority;
     checklist;
 
-    constructor(title, description, dueDate, priority, checklist) {
+    constructor(title, projectName, description, date, priority, checklist) {
         this.title = title;
+        this.projectName = projectName;
         this.description = description;
-        this.dueDate = dueDate;
+        this.date = date;
         this.priority = priority;
         this.checklist = checklist;
     }
@@ -21,6 +23,14 @@ export class ToDoItem {
         this.title = title;
     }
 
+    getProjectName() {
+        return this.projectName;
+    }
+    
+    setProjectName(projectName) {
+        this.projectName = projectName;
+    }
+
     getDescription() {
         return this.description;
     }
@@ -29,12 +39,12 @@ export class ToDoItem {
         this.description = description;
     }
 
-    getDueDate() {
-        return this.dueDate;
+    getDate() {
+        return this.date;
     }
     
-    setDueDate(dueDate) {
-        this.dueDate = dueDate;
+    setDate(date) {
+        this.date = date;
     }
 
     getPriority() {
