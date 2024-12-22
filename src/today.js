@@ -1,5 +1,6 @@
 import plant from "./images/plant.png";
 import { clear } from "./utility.js";
+import { displayToDo } from "./display-todo.js";
 
 export function today(projectList) {
     clear(); 
@@ -31,8 +32,6 @@ export function today(projectList) {
             checklistDiv.classList.add("checklist-item");
             checklistDiv.classList.add("today-checklist-item");
 
-
-
             const label = document.createElement("label");
             label.setAttribute("for", "item" + index);
             label.textContent = e.getTitle();
@@ -53,6 +52,10 @@ export function today(projectList) {
 
             checklistDiv.appendChild(d);
             form.appendChild(checklistDiv);
+
+            label.addEventListener("click", () => {
+                displayToDo(e);
+            })
 
             totalTodayTasks++;
         })

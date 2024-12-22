@@ -1,6 +1,9 @@
 import CircleProgress from "js-circle-progress";
-
+import flag from "./images/flag.png"
+import { clear } from "./utility";
+import { format } from "date-fns";
 export function displayToDo(todo) {
+    clear();
     const container = document.querySelector(".content");
 
     const div = document.createElement("div");
@@ -23,9 +26,19 @@ export function displayToDo(todo) {
     titleDiv.appendChild(title);
     div.appendChild(titleDiv);
 
+    const dateDiv = document.createElement("div");
+    dateDiv.classList.add("date-div");
+
     const dueDate = document.createElement("h3");
-    dueDate.textContent = todo.getDueDate();
-    div.appendChild(dueDate);
+    dueDate.textContent = format(todo.getDate(), "EEE, LLL d, y");
+    dateDiv.appendChild(dueDate);
+
+    if (todo.getDate().getMonth() == new Date().getMonth() && (todo.getDate().getDate() == new Date().getDate())) {
+        const flagIcon = document.createElement("img");
+        flagIcon.setAttribute("src", flag);
+        dateDiv.appendChild(flagIcon);
+    }
+    div.appendChild(dateDiv);
 
     const description = document.createElement("p");
     description.textContent = todo.getDescription();
@@ -33,10 +46,6 @@ export function displayToDo(todo) {
 
     const tasks = document.createElement("h2");
     tasks.textContent = "Tasks";
-    div.appendChild(tasks);
-
-    const hr = document.createElement("hr")
-    div.appendChild(hr);
 
     let totalChecked = 0;
     let total = 0;
@@ -67,6 +76,9 @@ export function displayToDo(todo) {
 
         form.appendChild(checklistDiv);
     });
+    if (total > 0) {
+        div.appendChild(tasks);
+    }
     form.classList.add("item-checklist");
     div.appendChild(form);
 

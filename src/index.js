@@ -5,6 +5,7 @@ import { ProjectList } from "./project-list.js";
 import { displayToDo } from "./display-todo.js";
 import { today } from "./today.js"
 import { addToDo } from "./add-todo.js";
+import { projects } from "./projects.js"
 
 let myToDo = new ToDoItem("Wash Dishes", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque dolore earum delectus dignissimos eveniet rerum aspernatur soluta dolor molestiae nemo similique iste voluptatibus quae vero ut, necessitatibus iure ex assumenda.", 
     "12/17/24", "High", ['Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.']);
@@ -16,21 +17,24 @@ let project = new Project("superProject");
 project.addTask(a);
 project.addTask(b);
 project.addTask(a);
-projectList.addProject(project);
+for (let i = 0; i < 10; i++)
+    projectList.addProject(project);
 
 
 today(projectList);
 
-const addTask = document.querySelector(".add-task");
-addTask.addEventListener("click", () => {
+const addTaskButton = document.querySelector(".add-task");
+addTaskButton.addEventListener("click", () => {
     addToDo(project);
 });
 
 
 const todayButton = document.querySelector(".today");
 todayButton.addEventListener("click", () => {
-    console.log(project);
-
     today(projectList);
 });
 
+const projectsButton = document.querySelector(".projects");
+projectsButton.addEventListener("click", () => {
+    projects(projectList);
+});
