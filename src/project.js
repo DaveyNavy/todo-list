@@ -10,6 +10,10 @@ export class Project {
         this.taskList = new Array();
     }
 
+    getName() {
+        return this.name;
+    }
+    
     addTask(task) {
         this.taskList.push(task);
     }

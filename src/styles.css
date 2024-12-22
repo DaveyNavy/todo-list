@@ -7,6 +7,10 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
     padding: 0;
 }
 
+textarea {
+    resize: none;
+}
+
 body {
     display: flex;
 }
@@ -68,9 +72,6 @@ circle-progress::part(circle) {
     align-items: center;
 }
 
-.todo-item-description {
-
-}
 
 .todo-item > h2 {
     padding-bottom: 1rem;
@@ -125,5 +126,46 @@ circle-progress::part(circle) {
 
 .placeholder {
     width: 25vw;
+}
+
+.add-todo > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.add-todo input, .add-todo textarea {
+    border: none;
+}
+
+.add-todo input:focus-visible, .add-todo textarea:focus-visible {
+    outline: none;
+}
+
+form > #title {
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.subtask {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-item {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.subtask-item > textarea {
+    flex: 1;
+}
+
+form > button {
+    width: 120px;
+    padding: 0.5rem;
 }
 

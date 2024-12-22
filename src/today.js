@@ -1,7 +1,9 @@
 import plant from "./images/plant.png";
-import { displayToDo } from "./display-todo";
+import { clear } from "./utility.js";
 
 export function today(projectList) {
+    clear(); 
+
     const container = document.querySelector(".content");
 
     const div = document.createElement("div");
