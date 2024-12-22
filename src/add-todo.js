@@ -3,7 +3,7 @@ import { Project } from "./project.js";
 import { today } from "./today";
 import { clear } from "./utility.js";
 
-export function addToDo(project) {
+export function addToDo(projectList) {
     clear();
 
     const container = document.querySelector(".content");
@@ -19,6 +19,31 @@ export function addToDo(project) {
     title.setAttribute("id", "title");
     title.setAttribute("name", "title");
     form.appendChild(title);
+
+    const projectDiv = document.createElement("div");
+    projectDiv.classList.add("form-item");
+
+    const projectLabel = document.createElement("label");
+    projectLabel.textContent = "Project: ";
+
+    const project = document.createElement("select");
+    project.setAttribute("id", "project");
+    project.setAttribute("name", "project");
+
+    const projects = projectList.getProjectList();
+    const option = document.createElement("option");
+    option.setAttribute("value", 'My Projects');
+    option.textContent = 'My Projects';
+    project.appendChild(option);
+    projects.forEach(element => {
+        const option = document.createElement("option");
+        option.setAttribute("value", element.getName());
+        option.textContent = element.getName();
+        project.appendChild(option);
+    })
+    projectDiv.appendChild(projectLabel);
+    projectDiv.appendChild(project);
+    form.appendChild(projectDiv);
 
     const description = document.createElement("textarea");
     description.setAttribute("placeholder", "Description");
@@ -100,8 +125,9 @@ export function addToDo(project) {
         let toDoChecklist = checkListItems.map(e => e.value);
         console.log(data["date"]+"T:00:00:00");
         console.log(new Date("2024-12-21"));
-        let newToDo = new ToDoItem(data["title"], project.getName(), data["description"], new Date(data["date"]+"T00:00:00"), data["priority"], toDoChecklist);
-        project.addTask(newToDo);
+        let newToDo = new ToDoItem(data["title"], data["project"], data["description"], new Date(data["date"]+"T00:00:00"), data["priority"], toDoChecklist);
+        
+        projectList.findProject(data["project"]).addTask(newToDo);
     })
 
     container.appendChild(div);

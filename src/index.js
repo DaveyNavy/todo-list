@@ -13,19 +13,13 @@ let a = new ToDoItem("Lorem ipsum dolor sit amet consectetur", "myProject", "xx"
 let b = new ToDoItem("tLorem ipsum dolor sit amet consectetur adipisicing elitwo", "myProject", "yy", new Date(2024, 11, 20), "high", []);
 
 let projectList = new ProjectList();
-let project = new Project("superProject");
-project.addTask(a);
-project.addTask(b);
-project.addTask(a);
-for (let i = 0; i < 10; i++)
-    projectList.addProject(project);
-
+let myProject = new Project("My Projects");
+projectList.addProject(myProject);
 
 today(projectList);
-
 const addTaskButton = document.querySelector(".add-task");
 addTaskButton.addEventListener("click", () => {
-    addToDo(project);
+    addToDo(projectList);
 });
 
 

@@ -18,4 +18,14 @@ export class ProjectList {
     getProjectList() {
         return this.projectList;
     }
+
+    findProject(projectName) {
+        for (const p of this.projectList) {
+            console.log(p);
+            if (p.getName() == projectName) {
+                return p;
+            }
+        }
+        return null;
+    }
 }

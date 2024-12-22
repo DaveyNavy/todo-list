@@ -170,7 +170,7 @@ form > #title {
     gap: 0.5rem;
 }
 
-.subtask-item > textarea {
+.form-item > textarea {
     flex: 1;
 }
 
