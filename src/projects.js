@@ -28,6 +28,7 @@ export function projects(projectList) {
     
             const input = document.createElement("input");
             input.setAttribute("type", "checkbox");
+            input.setAttribute("id", "item" + index);
             input.setAttribute("name", "item" + index);
 
             checklistDiv.appendChild(input);
@@ -38,6 +39,54 @@ export function projects(projectList) {
         card.appendChild(form);
         div.appendChild(card);
     })
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.classList.add("center");
+
+
+    const newProject = document.createElement("h1");
+    newProject.textContent = "+";
+    card.appendChild(newProject);
+
+    card.addEventListener("click", () => {
+        const dialog = document.createElement("dialog");
+        div.appendChild(dialog);
+
+        const form = document.createElement("form");
+
+        const nameDiv = document.createElement("div");
+
+        const label = document.createElement("label");
+        label.setAttribute("for", "name");
+        label.textContent = "Project name: ";
+
+        const input = document.createElement("input");
+        input.setAttribute("id", "name");
+        input.setAttribute("name", "name");
+
+        nameDiv.appendChild(label);
+        nameDiv.appendChild(input);
+        nameDiv.classList.add("form-item");
+
+        form.appendChild(nameDiv);
+
+        const submit = document.createElement("button");
+        submit.textContent = "Submit";
+        form.appendChild(submit);
+
+        dialog.appendChild(form);
+        dialog.showModal();
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            dialog.close();
+            let newProject = new Project(input.value);
+            projectList.addProject(newProject);
+            projects(projectList);
+        })
+    })
+    div.appendChild(card);
     container.appendChild(div);
 
 }
