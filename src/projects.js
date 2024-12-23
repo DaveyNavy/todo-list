@@ -1,3 +1,4 @@
+import { displayProject } from "./display-project";
 import { Project } from "./project";
 import { ToDoItem } from "./todo-item";
 import { clear } from "./utility";
@@ -8,16 +9,20 @@ export function projects(projectList) {
 
     const div = document.createElement("div");
     div.classList.add("projects-div")
-    console.log(projectList.getProjectList());
+
     projectList.getProjectList().forEach(element => {
         const card = document.createElement("div");
         card.classList.add("card");
 
         const title = document.createElement("h1");
         title.textContent = element.getName();
+        title.addEventListener("click", () => {
+            displayProject(element)
+        });
         card.appendChild(title);
 
         const form = document.createElement("form");
+        form.classList.add("projects-form")
         element.getTaskNames().forEach((task, index) => {
             const checklistDiv = document.createElement("div");
             checklistDiv.classList.add("checklist-item");

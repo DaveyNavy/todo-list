@@ -152,6 +152,11 @@ circle-progress::part(circle) {
     outline: none;
 }
 
+input {
+    max-width: 35rem;
+    text-overflow: clip;
+}
+
 form > #title {
     border: none;
     font-size: 2rem;
@@ -195,10 +200,15 @@ form > button {
     gap: 1rem;
 }
 
-.card > form {
+form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.projects-form label {
+    width: 25ch;
+    overflow: hidden;
 }
 
 .center {
@@ -208,9 +218,6 @@ form > button {
 }
 
 dialog > form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -218,4 +225,19 @@ dialog > form {
 
 dialog > button {
     flex: 0;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-item-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-item-date {
+    min-width: 17ch;
 }
