@@ -23,18 +23,26 @@ export function projects(projectList) {
 
         const form = document.createElement("form");
         form.classList.add("projects-form")
-        element.getTaskNames().forEach((task, index) => {
+        element.getTasks().forEach((task, index) => {
             const checklistDiv = document.createElement("div");
             checklistDiv.classList.add("checklist-item");
     
             const label = document.createElement("label");
             label.setAttribute("for", "item" + index);
-            label.textContent = task;
+            label.textContent = task.getTitle();
     
             const input = document.createElement("input");
             input.setAttribute("type", "checkbox");
             input.setAttribute("id", "item" + index);
             input.setAttribute("name", "item" + index);
+            input.addEventListener("change", function() {
+                if (this.checked) {
+                    task.setCompleted(true);
+                } else {
+                    task.setCompleted(false);
+                }
+            })
+            if (task.isCompleted()) input.setAttribute("checked", "checked");
 
             checklistDiv.appendChild(input);
             checklistDiv.appendChild(label);

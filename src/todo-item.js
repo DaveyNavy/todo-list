@@ -5,6 +5,7 @@ export class ToDoItem {
     date;
     priority;
     checklist;
+    completed;
 
     constructor(title, projectName, description, date, priority, checklist) {
         this.title = title;
@@ -13,6 +14,7 @@ export class ToDoItem {
         this.date = date;
         this.priority = priority;
         this.checklist = checklist;
+        this.completed = false;
     }
 
     getTitle() {
@@ -61,5 +63,13 @@ export class ToDoItem {
 
     setChecklist(checklist) {
         this.checklist = checklist;
+    }
+
+    isCompleted() {
+        return this.completed;
+    }
+
+    setCompleted(val) {
+        this.completed = val;
     }
 }

@@ -2,6 +2,7 @@ import { ToDoItem } from "./todo-item";
 import { Project } from "./project.js";
 import { today } from "./today";
 import { clear } from "./utility.js";
+import { CheckListItem } from "./checklist-item.js";
 
 export function addToDo(projectList) {
     clear();
@@ -118,7 +119,7 @@ export function addToDo(projectList) {
         let formData = new FormData(form);
         let data = Object.fromEntries(formData.entries());
 
-        let toDoChecklist = checkListItems.map(e => e.value);
+        let toDoChecklist = checkListItems.map(e => new CheckListItem(e.value, false));
         console.log(data["date"]+"T:00:00:00");
         console.log(new Date("2024-12-21"));
         let newToDo = new ToDoItem(data["title"], data["project"], data["description"], new Date(data["date"]+"T00:00:00"), data["priority"], toDoChecklist);

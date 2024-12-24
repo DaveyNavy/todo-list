@@ -39,6 +39,14 @@ export function today(projectList) {
             const input = document.createElement("input");
             input.setAttribute("type", "checkbox");
             input.setAttribute("name", "item" + index);
+            input.addEventListener("change", function() {
+                if (this.checked) {
+                    e.setCompleted(true);
+                } else {
+                    e.setCompleted(false);
+                }
+            })
+            if (e.isCompleted()) input.setAttribute("checked", "checked");
 
             const projectName = document.createElement("p");
             projectName.textContent = e.getProjectName();

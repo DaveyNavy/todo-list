@@ -10,9 +10,7 @@ export class ProjectList {
     }
 
     removeProject(project) {
-        this.projectList = this.projectList.filter((item) => {
-            item.getName() != project.getName();
-        })
+        this.projectList = this.projectList.filter((item) => item.getName() != project.getName());
     }
 
     getProjectList() {

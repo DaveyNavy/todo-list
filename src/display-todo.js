@@ -67,7 +67,7 @@ export function displayToDo(projectList, project, todo) {
 
         const label = document.createElement("label");
         label.setAttribute("for", "item" + index);
-        label.textContent = element;
+        label.textContent = element.getDescription();
 
         const input = document.createElement("input");
         input.setAttribute("type", "checkbox");
@@ -75,11 +75,17 @@ export function displayToDo(projectList, project, todo) {
         input.addEventListener("change", function() {
             if (this.checked) {
                 totalChecked++;
+                element.setCompleted(true);
             } else {
                 totalChecked--;
+                element.setCompleted(false);
             }
             cp.value = totalChecked / total * 100;
         })
+        if (element.isCompleted()) { 
+            input.setAttribute("checked", "checked");
+            totalChecked++;
+        }
         total++;
 
         checklistDiv.appendChild(input);
@@ -87,6 +93,8 @@ export function displayToDo(projectList, project, todo) {
 
         form.appendChild(checklistDiv);
     });
+    cp.value = totalChecked / total * 100;
+
     if (total > 0) {
         div.appendChild(tasks);
     }

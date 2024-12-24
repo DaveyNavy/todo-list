@@ -15,18 +15,23 @@ export function displayProject(projectList, project) {
     const title = document.createElement("h1");
     title.textContent = project.getName();
 
-    const trashIcon = document.createElement("img");
-    trashIcon.setAttribute("src", trash);
-    trashIcon.classList.add("icon");
-    trashIcon.addEventListener("click", () => {
-        projectList.removeProject(project);
-        projects(projectList);
-    })
-    titleDiv.classList.add("todo-item-title");
 
     titleDiv.appendChild(title);
-    titleDiv.appendChild(trashIcon);
     div.appendChild(titleDiv);
+    if (project.getName() != "My Project") {
+        const trashIcon = document.createElement("img");
+        trashIcon.setAttribute("src", trash);
+        trashIcon.classList.add("icon");
+        trashIcon.addEventListener("click", () => {
+            console.log(projectList.getProjectList());
+            projectList.removeProject(project);
+            console.log(projectList.getProjectList());
+            projects(projectList);
+        })
+        titleDiv.appendChild(trashIcon);
+    }
+    titleDiv.classList.add("todo-item-title");
+
 
     const form = document.createElement("form");
     project.getTasks().forEach((element, index) => {
@@ -42,6 +47,14 @@ export function displayProject(projectList, project) {
         const input = document.createElement("input");
         input.setAttribute("type", "checkbox");
         input.setAttribute("name", "item" + index);
+        input.addEventListener("change", function() {
+            if (this.checked) {
+                element.setCompleted(true);
+            } else {
+                element.setCompleted(false);
+            }
+        })
+        if (element.isCompleted()) input.setAttribute("checked", "checked");
 
         const date = document.createElement("p");
         console.log(element.getDate());
