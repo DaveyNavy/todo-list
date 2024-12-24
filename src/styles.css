@@ -241,3 +241,7 @@ dialog > button {
 .project-item-date {
     min-width: 17ch;
 }
+
+.icon {
+    width: 2rem;
+}

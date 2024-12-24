@@ -17,7 +17,7 @@ export function projects(projectList) {
         const title = document.createElement("h1");
         title.textContent = element.getName();
         title.addEventListener("click", () => {
-            displayProject(element)
+            displayProject(projectList, element)
         });
         card.appendChild(title);
 

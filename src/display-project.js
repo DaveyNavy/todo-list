@@ -1,7 +1,10 @@
 import { clear } from "./utility";
 import { format } from "date-fns";
+import { displayToDo } from "./display-todo";
+import trash from "./images/trash.svg"
+import { projects } from "./projects";
 
-export function displayProject(project) {
+export function displayProject(projectList, project) {
     clear();
     const container = document.querySelector(".content");
 
@@ -12,7 +15,17 @@ export function displayProject(project) {
     const title = document.createElement("h1");
     title.textContent = project.getName();
 
+    const trashIcon = document.createElement("img");
+    trashIcon.setAttribute("src", trash);
+    trashIcon.classList.add("icon");
+    trashIcon.addEventListener("click", () => {
+        projectList.removeProject(project);
+        projects(projectList);
+    })
+    titleDiv.classList.add("todo-item-title");
+
     titleDiv.appendChild(title);
+    titleDiv.appendChild(trashIcon);
     div.appendChild(titleDiv);
 
     const form = document.createElement("form");
@@ -31,12 +44,17 @@ export function displayProject(project) {
         input.setAttribute("name", "item" + index);
 
         const date = document.createElement("p");
-        date.textContent = format(element.getDate(), "EEE, LLL d, y");
+        console.log(element.getDate());
+        date.textContent = element.getDate() != 'Invalid Date'? format(element.getDate(), "EEE, LLL d, y") : '';
         date.classList.add("project-item-date");
-        
+
         checklistDiv.appendChild(input);
         checklistDiv.appendChild(label);
         
+        checklistDiv.addEventListener("click", () => {
+            displayToDo(projectList, project, element);
+        })
+
         d.appendChild(checklistDiv);
         d.appendChild(date);
 

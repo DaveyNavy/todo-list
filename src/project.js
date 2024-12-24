@@ -20,7 +20,7 @@ export class Project {
 
     removeTask(task) {
         this.taskList = this.taskList.filter((item) => {
-            item != task;
+            item.getTitle() != task.getTitle();
         })
     }
 

@@ -31,10 +31,6 @@ export function addToDo(projectList) {
     project.setAttribute("name", "project");
 
     const projects = projectList.getProjectList();
-    const option = document.createElement("option");
-    option.setAttribute("value", 'My Projects');
-    option.textContent = 'My Projects';
-    project.appendChild(option);
     projects.forEach(element => {
         const option = document.createElement("option");
         option.setAttribute("value", element.getName());

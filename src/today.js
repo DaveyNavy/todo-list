@@ -54,7 +54,7 @@ export function today(projectList) {
             form.appendChild(checklistDiv);
 
             label.addEventListener("click", () => {
-                displayToDo(e);
+                displayToDo(projectList, element, e);
             })
 
             totalTodayTasks++;
