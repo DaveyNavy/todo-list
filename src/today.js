@@ -1,6 +1,7 @@
 import plant from "./images/plant.png";
 import { clear } from "./utility.js";
 import { displayToDo } from "./display-todo.js";
+import { populateStorage } from "./populate-storage.js";
 
 export function today(projectList) {
     clear(); 
@@ -45,6 +46,7 @@ export function today(projectList) {
                 } else {
                     e.setCompleted(false);
                 }
+                populateStorage(projectList);
             })
             if (e.isCompleted()) input.setAttribute("checked", "checked");
 

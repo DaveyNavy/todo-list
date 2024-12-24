@@ -7,14 +7,14 @@ export class ToDoItem {
     checklist;
     completed;
 
-    constructor(title, projectName, description, date, priority, checklist) {
+    constructor(title, projectName, description, date, priority, checklist, completed=false) {
         this.title = title;
         this.projectName = projectName;
         this.description = description;
         this.date = date;
         this.priority = priority;
         this.checklist = checklist;
-        this.completed = false;
+        this.completed = completed;
     }
 
     getTitle() {

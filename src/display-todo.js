@@ -4,6 +4,8 @@ import trash from "./images/trash.svg"
 import { clear } from "./utility";
 import { format } from "date-fns";
 import { projects } from "./projects";
+import { populateStorage } from "./populate-storage";
+
 export function displayToDo(projectList, project, todo) {
     clear();
     const container = document.querySelector(".content");
@@ -30,6 +32,7 @@ export function displayToDo(projectList, project, todo) {
     trashIcon.addEventListener("click", () => {
         project.removeTask(todo);
         projects(projectList);
+        populateStorage(projectList);
     })
     
     titleDiv.appendChild(cp);
@@ -81,6 +84,7 @@ export function displayToDo(projectList, project, todo) {
                 element.setCompleted(false);
             }
             cp.value = totalChecked / total * 100;
+            populateStorage(projectList);
         })
         if (element.isCompleted()) { 
             input.setAttribute("checked", "checked");
@@ -93,7 +97,7 @@ export function displayToDo(projectList, project, todo) {
 
         form.appendChild(checklistDiv);
     });
-    cp.value = totalChecked / total * 100;
+    if (total > 0) cp.value = totalChecked / total * 100;
 
     if (total > 0) {
         div.appendChild(tasks);

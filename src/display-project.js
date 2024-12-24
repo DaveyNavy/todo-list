@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { displayToDo } from "./display-todo";
 import trash from "./images/trash.svg"
 import { projects } from "./projects";
+import { populateStorage } from "./populate-storage";
 
 export function displayProject(projectList, project) {
     clear();
@@ -23,10 +24,9 @@ export function displayProject(projectList, project) {
         trashIcon.setAttribute("src", trash);
         trashIcon.classList.add("icon");
         trashIcon.addEventListener("click", () => {
-            console.log(projectList.getProjectList());
             projectList.removeProject(project);
-            console.log(projectList.getProjectList());
             projects(projectList);
+            populateStorage(projectList);
         })
         titleDiv.appendChild(trashIcon);
     }
@@ -53,6 +53,7 @@ export function displayProject(projectList, project) {
             } else {
                 element.setCompleted(false);
             }
+            populateStorage(projectList);
         })
         if (element.isCompleted()) input.setAttribute("checked", "checked");
 

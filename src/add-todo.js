@@ -3,6 +3,7 @@ import { Project } from "./project.js";
 import { today } from "./today";
 import { clear } from "./utility.js";
 import { CheckListItem } from "./checklist-item.js";
+import { populateStorage } from "./populate-storage.js";
 
 export function addToDo(projectList) {
     clear();
@@ -125,6 +126,8 @@ export function addToDo(projectList) {
         let newToDo = new ToDoItem(data["title"], data["project"], data["description"], new Date(data["date"]+"T00:00:00"), data["priority"], toDoChecklist);
         
         projectList.findProject(data["project"]).addTask(newToDo);
+        populateStorage(projectList);
+        console.log(localStorage["projectList"]);
     })
 
     container.appendChild(div);

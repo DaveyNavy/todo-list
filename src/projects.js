@@ -2,6 +2,7 @@ import { displayProject } from "./display-project";
 import { Project } from "./project";
 import { ToDoItem } from "./todo-item";
 import { clear } from "./utility";
+import { populateStorage } from "./populate-storage";
 
 export function projects(projectList) {
     clear();
@@ -41,6 +42,7 @@ export function projects(projectList) {
                 } else {
                     task.setCompleted(false);
                 }
+                populateStorage(projectList);
             })
             if (task.isCompleted()) input.setAttribute("checked", "checked");
 
