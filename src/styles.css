@@ -173,6 +173,7 @@ form > #title {
 .form-item {
     display: flex;
     gap: 0.5rem;
+    align-items: flex-start;
 }
 
 .form-item > textarea {
@@ -244,4 +245,8 @@ dialog > button {
 
 .icon {
     width: 2rem;
+}
+
+.icon-small {
+    width: 1rem;
 }

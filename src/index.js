@@ -17,11 +17,9 @@ if (!localStorage.getItem("projectList")) {
 } 
 else {
     let prevProjectList = JSON.parse(localStorage.getItem("projectList"));
-    console.log(prevProjectList);
     prevProjectList["projectList"].forEach((project) => {
         let newProject = new Project(project["name"]);
         project["taskList"].forEach((task) => {
-            console.log(task);
             let newChecklist = [];
             task["checklist"].forEach((checklistItem) => {
                 newChecklist.push(new CheckListItem(checklistItem["description"], checklistItem["completed"]))
@@ -32,7 +30,6 @@ else {
         projectList.addProject(newProject);
     })
 }
-console.log(projectList);
 
 today(projectList);
 const addTaskButton = document.querySelector(".add-task");

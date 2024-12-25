@@ -3,11 +3,15 @@ import { ToDoItem } from "./todo-item";
 export class Project {
     name;
     taskList;
+    projectIndex;
+    static index = 0;
 
 
     constructor(name) {
         this.name = name;
         this.taskList = new Array();
+        this.projectIndex = Project.index;
+        Project.index++;
     }
 
     getName() {
@@ -19,7 +23,7 @@ export class Project {
     }
 
     removeTask(task) {
-        this.taskList = this.taskList.filter((item) => item.getTitle() != task.getTitle());
+        this.taskList.splice(this.taskList.findIndex(e => e.getIndex() == task.getIndex()), 1);
     }
 
     getTasks() {
@@ -34,5 +38,9 @@ export class Project {
         return this.taskList.filter(item => {
             return item.getDate().getMonth() == date.getMonth() && item.getDate().getDate() == date.getDate();
         })
+    }
+
+    getIndex() {
+        return this.projectIndex;
     }
 }

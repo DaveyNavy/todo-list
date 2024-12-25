@@ -1,10 +1,12 @@
 import CircleProgress from "js-circle-progress";
-import flag from "./images/flag.png"
-import trash from "./images/trash.svg"
+import flag from "./images/flag.png";
+import trash from "./images/trash.svg";
+import pencil from "./images/pencil.svg"
 import { clear } from "./utility";
 import { format } from "date-fns";
-import { projects } from "./projects";
+import { displayProject } from "./display-project";
 import { populateStorage } from "./populate-storage";
+import { updateToDo } from "./update-todo";
 
 export function displayToDo(projectList, project, todo) {
     clear();
@@ -31,13 +33,21 @@ export function displayToDo(projectList, project, todo) {
     trashIcon.classList.add("icon");
     trashIcon.addEventListener("click", () => {
         project.removeTask(todo);
-        projects(projectList);
+        displayProject(projectList, project);
         populateStorage(projectList);
+    })
+
+    const pencilIcon = document.createElement("img");
+    pencilIcon.setAttribute("src", pencil);
+    pencilIcon.classList.add("icon");
+    pencilIcon.addEventListener("click", () => {
+        updateToDo(projectList, todo);
     })
     
     titleDiv.appendChild(cp);
     titleDiv.appendChild(title);
     titleDiv.appendChild(trashIcon);
+    titleDiv.appendChild(pencilIcon);
     div.appendChild(titleDiv);
 
     const dateDiv = document.createElement("div");

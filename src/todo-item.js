@@ -6,6 +6,8 @@ export class ToDoItem {
     priority;
     checklist;
     completed;
+    todoIndex;
+    static index = 0;
 
     constructor(title, projectName, description, date, priority, checklist, completed=false) {
         this.title = title;
@@ -15,6 +17,8 @@ export class ToDoItem {
         this.priority = priority;
         this.checklist = checklist;
         this.completed = completed;
+        this.todoIndex = ToDoItem.index;
+        ToDoItem.index++;
     }
 
     getTitle() {
@@ -71,5 +75,9 @@ export class ToDoItem {
 
     setCompleted(val) {
         this.completed = val;
+    }
+
+    getIndex() {
+        return this.todoIndex;
     }
 }

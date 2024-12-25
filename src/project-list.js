@@ -1,5 +1,6 @@
 export class ProjectList {
     projectList;
+    projectIndex;
 
     constructor() {
         this.projectList = new Array();
@@ -10,7 +11,7 @@ export class ProjectList {
     }
 
     removeProject(project) {
-        this.projectList = this.projectList.filter((item) => item.getName() != project.getName());
+        this.projectList.splice(this.projectList.findIndex(e => e.getIndex() == project.getIndex()), 1);
     }
 
     getProjectList() {
@@ -19,7 +20,6 @@ export class ProjectList {
 
     findProject(projectName) {
         for (const p of this.projectList) {
-            console.log(p);
             if (p.getName() == projectName) {
                 return p;
             }
