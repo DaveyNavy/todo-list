@@ -1,6 +1,4 @@
 import { ToDoItem } from "./todo-item";
-import { Project } from "./project.js";
-import { today } from "./today";
 import { clear } from "./utility.js";
 import { CheckListItem } from "./checklist-item.js";
 import { populateStorage } from "./populate-storage.js";

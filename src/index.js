@@ -5,7 +5,6 @@ import { ProjectList } from "./project-list.js";
 import { today } from "./today.js"
 import { addToDo } from "./add-todo.js";
 import { projects } from "./projects.js";
-import { displayProject } from "./display-project.js";
 import { populateStorage } from "./populate-storage.js";
 import { CheckListItem } from "./checklist-item.js";
 

@@ -1,5 +1,3 @@
-import { ToDoItem } from "./todo-item";
-
 export class Project {
     name;
     taskList;

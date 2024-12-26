@@ -1,6 +1,5 @@
 import { displayProject } from "./display-project";
 import { Project } from "./project";
-import { ToDoItem } from "./todo-item";
 import { clear } from "./utility";
 import { populateStorage } from "./populate-storage";
 
