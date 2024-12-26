@@ -1,0 +1,6 @@
+/*!
+ * Circle Progress - v1.0.0-beta.0 - 2023-07-17
+ * https://tigrr.github.io/circle-progress/
+ * Copyright (c) Tigran Sargsyan
+ * Licensed MIT
+ */
