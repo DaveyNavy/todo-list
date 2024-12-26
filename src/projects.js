@@ -98,6 +98,7 @@ export function projects(projectList) {
             dialog.close();
             let newProject = new Project(input.value);
             projectList.addProject(newProject);
+            populateStorage(projectList);
             projects(projectList);
         })
     })
